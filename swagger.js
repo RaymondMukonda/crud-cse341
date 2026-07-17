@@ -11,11 +11,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000/api'
+        // Use environment variable if available, otherwise default to localhost
+        url: process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}/api`
       }
     ]
   },
-  apis: ['./routes/*.js'], // path to your route files
+  apis: ['./routes/*.js'],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
